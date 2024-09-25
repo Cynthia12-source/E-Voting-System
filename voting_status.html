@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voting Status</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        function fetchVotingStatus() {
+            $.ajax({
+                url: '/get_voting_status',
+                method: 'GET',
+                success: function(data) {
+                    $('#voting-status').html(data);
+                },
+                error: function(xhr, status, error) {
+                    console.error('Failed to fetch voting status:', status, error);
+                }
+            });
+        }
+
+        setInterval(fetchVotingStatus, 2000);
+
+        $(document).ready(function() {
+            fetchVotingStatus();
+        });
+    </script>
+    <style>
+        body {
+            background-color: rgb(25, 153, 153); /* Set the background color for the entire page */
+            color: Black; /* Optional: Change text color for better contrast */
+            font-family: Arial, sans-serif; /* Optional: Set a default font */
+        }
+        h1 {
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Voting Status</h1>
+    <div id="voting-status">
+        <!-- Voting status will be dynamically updated here -->
+    </div>
+</body>
+</html>
