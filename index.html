@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voter Registration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: rgb(25, 153, 153);
+        }
+        .container {
+            max-width: 400px;
+            margin: 70px auto;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-group {
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+        label {
+            margin-right: 10px;
+        }
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+        }
+        .form-control:focus {
+            border-color: #aaa;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .submit-button {
+            background-color: rgb(25, 153, 153);
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            display: block;
+            margin: 20px auto;
+        }
+        .submit-button:hover {
+            background-color: rgb(25, 153, 153);
+        }
+        .error-message {
+            color: red;
+            font-size: 14px;
+            margin-top: 10px;
+            text-align: center;
+        }
+        .success-message {
+            font-family: Arial, sans-serif;
+            color:rgb(25, 153, 153);
+            font-size: 30px;
+            margin-top: 10px;
+            text-align: center;
+        }
+        h1 {
+            text-align: center;
+        }
+        #camera-container {
+            position: relative;
+            width: 640px;
+            height: 480px;
+            border: 1px solid black;
+            display: none;
+        }
+        #count {
+            font-size: 24px;
+            font-weight: bold;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Voter Registration</h1>
+
+        {% if show_registration %}
+        <form action="" method="post">
+            <div class="form-group">
+                <label for="full-name">Full Name:</label>
+                <input type="text" id="full-name" name="full-name" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="id-number">ID Number:</label>
+                <input type="text" id="id-number" name="id-number" class="form-control" required>
+            </div>
+            {% if error_message %}
+                <p class="error-message">{{ error_message }}</p>
+            {% endif %}
+            <button type="submit" class="submit-button" id="submit-button">Capture Face</button>
+        </form>
+        {% endif %}
+
+        {% if success_message %}
+            <p class="success-message">{{ success_message }}</p>
+        {% endif %}
+    </div>
+    <div id="camera-container"></div>
+    <div id="count"></div>
+</body>
+</html>
