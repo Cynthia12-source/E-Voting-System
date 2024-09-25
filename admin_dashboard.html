@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 60vh;
+            margin: 0;
+            
+        }
+        .container {
+            text-align: center;
+        }
+        h1 {
+            color: rgb(25, 153, 153);
+        }
+        .buttons {
+            margin-top: 20px;
+        }
+        .buttons button {
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            background-color: rgb(25, 153, 153);
+            color: #fff;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .buttons button:hover {
+            background-color: rgb(0, 123, 123);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to the Admin Dashboard</h1>
+        <p>You can register a new voter by clicking on the "Register Voter" button</p> 
+        <p>and access the database by clicking on the "Database" button.</p>
+        <div class="buttons">
+            <button onclick="window.location.href='{{ url_for('index') }}'">Register Voter</button>
+            <button onclick="window.location.href='http://localhost/phpmyadmin/db_structure.php?server=1&db=voting_system'">Database</button>
+        </div>
+    </div>
+</body>
+</html>
